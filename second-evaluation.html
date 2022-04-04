@@ -100,7 +100,7 @@
             expenseSection.innertext="Your Expense is :"+element.expenseKey;
         var savingsSection=document.createElement("p");
             savingsSection.innertext="Your Expense is :"+element.savingsKey;
-        box.append(monthHead,incomeSection,expenseSection,savingsSection);
+        box.append(monthHead.innerText,incomeSection.innertext,expenseSection.innertext,savingsSection.innertext);
         document.querySelector("#outputsection").append(box);
     }
 </script>
