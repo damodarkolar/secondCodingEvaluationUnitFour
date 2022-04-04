@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            width: 1200px;
+            box-sizing: border-box;
+            margin-left: 28%;
+            margin-right: 28%;
+        }
+        body>div{
+            width: 70%;
+            box-sizing: border-box;
+            background-color: rgb(241, 246, 250);
+            margin: 0px;      
+            padding: 0px;      
+        }
+        #topcards{
+            background-color: white;
+            padding-bottom: 20px;
+            padding-top: 20px;
+            width: 100%;
+            height: 30%;
+        }
+        #topcards>h1{
+            text-align: center;
+            padding: 0px;
+        }
+        #topcards>div{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        #topcards>div>div{
+            width: 29%;
+            height: 170px;
+        }
+        #topcards>div>div>img{
+            width: 100%;
+            height: 75%;
+        }
+        #topcards>div>div>p{
+            color: rgb(206, 201, 201);
+            padding: 0px;
+            margin: 0px;
+            font-size: 12px;
+        }
+        #topcards>div>div>h4{
+            padding: 0px;
+            margin: 0px;
+        }
+        #bottomcards{
+            width: 100%;
+            height: 70%;  
+            padding: 40px;
+            display: grid;
+            box-sizing: border-box;
+            gap: 20px;
+            grid-template-columns: repeat(4,1fr); 
+            grid-template-rows: 250px 250px ;         
+        }
+        #bottomcards>div{
+            background-color: white;  
+            box-sizing: border-box;                     
+        }
+        #bottomcards>div>img{
+            height: 45%;
+            width: 60% ;
+            border-radius: 100%; 
+            padding-left: 20%;
+            padding-right: 20%;    
+            padding-top: 10px;               
+        }  
+        #bottomcards>div>h3{
+            padding: 5px;
+            margin: 0px;
+            text-align: center;
+        } 
+        #bottomcards>div>p{
+            margin: 0px;
+            padding: 0px;
+            color: grey;
+            font-size: 12px;
+            text-align: center;
+        }
+        @media all and (min-width: 80px) and (max-width: 400px) {
+            #topcards>div{
+                flex-wrap:wrap-reverse
+            }
+            #bottomcards{
+                grid-template-columns: repeat(2,1fr); 
+            }                        
+        }
+        @media all and (min-width: 401px) and (max-width: 800px) {
+            #topcards>div{
+                flex-wrap: wrap;
+            }
+            #bottomcards{
+                grid-template-columns: repeat(3,1fr); 
+            }              
+        }        
+    </style>
+</head>
+<body>
+    <div>
+        <div id="topcards">
+            <h1>Our Blog Posts</h1>
+            <div>
+                <div>
+                    <img src="https://via.placeholder.com/350x150" alt="1ti"><p>29, January 2019</p><h4>Architectural Art modern</h4>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/350x150" alt="2ti"><p>29, January 2019</p><h4>Architectural Art modern</h4></h4>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/350x150" alt="3ti"><p>29, January 2019</p><h4>Architectural Art modern</h4></h4>
+                </div>
+            </div>
+        </div>
+        <div id="bottomcards">
+            <div>
+                <img src="https://via.placeholder.com/350x150" alt="1bi">
+                <h3>Creative Design</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/350x150" alt="2bi">
+                <h3>Digital Design</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/350x150" alt="3bi">
+                <h3>Application Design</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/350x150" alt="4bi">
+                <h3>Web Development</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/350x150" alt="5bi">
+                <h3>Brandingn</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/350x150" alt="6bi">
+                <h3>Graphic Design</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/350x150" alt="7bi">
+                <h3>Email Marketing</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/350x150" alt="8bi">
+                <h3>Web Design</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+            </div>            
+        </div>
+    </div>    
+</body>
+</html>
