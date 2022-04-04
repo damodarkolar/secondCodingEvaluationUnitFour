@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #inputSection{
+            width: auto;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        #outputsection{
+            display: grid;
+            width: 100%;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+        #outputsection>div{
+
+            display: flex;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+             }
+        div>h1{
+            color: blue;
+            text-decoration: underline;
+        }
+        #inputForm>h2{
+            border-bottom: 0px;
+            padding-bottom: 0px;
+        }
+        #inputForm>#clickTab{
+            width: 70%;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: blue;
+            color: white;
+            text-decoration: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="inputSection">
+        <h1>Expense Tracker</h1>
+        <form action="" id="inputForm">
+            <h2>Month</h2>
+            <select name="Select month" id="month">
+                <option value="select">Select</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+            <h2 id="income">Income</h2>
+            <input type="number" id="incomeTab">
+            <h2 id="expense">Expense</h2>
+            <input type="number" id="expenseTab"> 
+            <input type="submit" value="Submit" id="clickTab">          
+        </form>
+    </div>
+    <div id="outputsection">
+    </div>    
+</body>
+<script>
+    document.querySelector("#inputForm").addEventListener("submit",calculator);
+    var dataArr=[];
+    function calculator(){
+        event.preventDefault();
+        var element={};
+        element.monthKey=document.getElementById("month").value;
+        element.incomeKey=document.getElementById("incomeTab").value;
+        element.expenseKey=document.getElementById("expenseTab").value;
+        element.savingsKey=((+document.getElementById("incomeTab").value)-(+document.getElementById("expenseTab").value));
+        dataArr.push(element);
+        localStorage.setItem("data",dataArr);
+        var box=document.createElement("div");
+        var monthHead=document.createElement("h2");
+            monthHead.innertext=element.monthKey;
+        var incomeSection=document.createElement("p");
+            incomeSection.innertext="Your Income is :"+element.incomeKey;
+        var expenseSection=document.createElement("p");
+            expenseSection.innertext="Your Expense is :"+element.expenseKey;
+        var savingsSection=document.createElement("p");
+            savingsSection.innertext="Your Expense is :"+element.savingsKey;
+        box.append(monthHead,incomeSection,expenseSection,savingsSection);
+        document.querySelector("#outputsection").append(box);
+    }
+</script>
+</html>
