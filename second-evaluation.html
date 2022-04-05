@@ -65,7 +65,6 @@
             text-decoration: bold;
             font-size: 20px;
         }
-       
         #inputSection>#inputForm>#month option{
             background-color: grey;
             color: white;
@@ -134,7 +133,7 @@
             expenseSection.innerText="Your Expense is :"+element.expenseKey;
             expenseSection.setAttribute("class","expense");
         var savingsSection=document.createElement("p");
-            savingsSection.innerText="Your Expense is :"+element.savingsKey;
+            savingsSection.innerText="Your Savings is :"+element.savingsKey;
             savingsSection.setAttribute("class","savings")
         box.append(monthHead,incomeSection,expenseSection,savingsSection);
         document.querySelector("#outputSection").append(box);
