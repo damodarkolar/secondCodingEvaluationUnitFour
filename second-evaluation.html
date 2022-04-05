@@ -18,18 +18,36 @@
             margin-bottom: 20px;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
-        #outputsection{
+        #outputSection{
             display: grid;
-            width: 100%;
+            width: 80%;
             grid-template-columns: repeat(4,1fr);
-            gap: 20px;
+            row-gap: 20px;
         }
-        #outputsection>div{
-
+        #outputSection>div{
             display: flex;
+            width: 90%;
             flex-direction: column;
+            box-sizing: border-box;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding: 10px;
+            margin: auto;
              }
+        #outputSection>div>h2{
+            color: red;
+        }
+        #outputSection>div>.month{
+            color: blue;
+        }
+        #outputSection>div>.income{
+            color: teal;            
+        }
+        #outputSection>div>.expense{
+            color: brown;            
+        }
+        #outputSection>div>.savings{
+            color: rgb(12, 70, 51);            
+        }
         div>h1{
             color: blue;
             text-decoration: underline;
@@ -76,7 +94,7 @@
             <input type="submit" value="Submit" id="clickTab">          
         </form>
     </div>
-    <div id="outputsection">
+    <div id="outputSection">
     </div>    
 </body>
 <script>
@@ -90,18 +108,31 @@
         element.expenseKey=document.getElementById("expenseTab").value;
         element.savingsKey=((+document.getElementById("incomeTab").value)-(+document.getElementById("expenseTab").value));
         dataArr.push(element);
-        localStorage.setItem("data",dataArr);
-        var box=document.createElement("div");
+        localStorage.setItem("data",JSON.stringify(dataArr));
+        var storageArr=localStorage.getItem("data");
+        console.log(JSON.parse(storageArr));
+        createBoxes(JSON.parse(storageArr));
+    }
+
+        function createBoxes(storageArr){
+       //document.querySelector("#outputSection")="";
+        storageArr.forEach(function(element) {
+            var box=document.createElement("div");
         var monthHead=document.createElement("h2");
-            monthHead.innertext=element.monthKey;
+            monthHead.innerText=element.monthKey;
+            monthHead.setAttribute("class", "month")
         var incomeSection=document.createElement("p");
-            incomeSection.innertext="Your Income is :"+element.incomeKey;
+            incomeSection.innerText="Your Income is :"+element.incomeKey;
+            incomeSection.setAttribute("class","income");
         var expenseSection=document.createElement("p");
-            expenseSection.innertext="Your Expense is :"+element.expenseKey;
+            expenseSection.innerText="Your Expense is :"+element.expenseKey;
+            expenseSection.setAttribute("class","expense");
         var savingsSection=document.createElement("p");
-            savingsSection.innertext="Your Expense is :"+element.savingsKey;
-        box.append(monthHead.innerText,incomeSection.innertext,expenseSection.innertext,savingsSection.innertext);
-        document.querySelector("#outputsection").append(box);
+            savingsSection.innerText="Your Expense is :"+element.savingsKey;
+            savingsSection.setAttribute("class","savings")
+        box.append(monthHead,incomeSection,expenseSection,savingsSection);
+        document.querySelector("#outputSection").append(box);
+        });
     }
 </script>
 </html>
