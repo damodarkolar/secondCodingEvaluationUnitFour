@@ -103,6 +103,7 @@
 </body>
 <script>
     document.querySelector("#inputForm").addEventListener("submit",calculator);
+
     var dataArr=[];
     function calculator(){
         event.preventDefault();
@@ -111,12 +112,28 @@
         element.incomeKey=document.getElementById("incomeTab").value;
         element.expenseKey=document.getElementById("expenseTab").value;
         element.savingsKey=((+document.getElementById("incomeTab").value)-(+document.getElementById("expenseTab").value));
-        dataArr.push(element);
-        localStorage.setItem("data",JSON.stringify(dataArr));
-        var storageArr=localStorage.getItem("data");
-        console.log(JSON.parse(storageArr));
-        createBoxes(JSON.parse(storageArr));
+        if(element.monthKey=="select" || element.incomeKey==null || +element.incomeKey<=0 ||  element.expenseKey==null || element.expenseKey<=0){
+           alert("empty values")
+        }else{
+            var storageArr=localStorage.getItem("data");
+            if(storageArr==null){
+                dataArr=[];
+                dataArr.push(element);
+                localStorage.setItem("data",JSON.stringify(dataArr));
+                storageArr=localStorage.getItem("data")
+                createBoxes(JSON.parse(storageArr));
+            }else{
+                storageArr=JSON.parse(storageArr);
+                storageArr.push(element);
+                localStorage.setItem("data",JSON.stringify(storageArr));
+                storageArr=localStorage.getItem("data")
+                createBoxes(JSON.parse(storageArr));                                
+            }
+            
+        }
     }
+
+
 
         function createBoxes(storageArr){
        var outputSection=document.querySelector("#outputSection");
@@ -139,5 +156,10 @@
         document.querySelector("#outputSection").append(box);
         });
     }
+    function loadManager(){
+        let storedData=localStorage.getItem("data");
+        createBoxes(JSON.parse(storedData));
+    }
+    window.addEventListener("load", loadManager);
 </script>
 </html>
